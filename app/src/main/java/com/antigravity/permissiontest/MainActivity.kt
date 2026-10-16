@@ -4,7 +4,7 @@ import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.RemoteInput
+import androidx.core.app.RemoteInput
 import android.app.usage.UsageStatsManager
 import android.content.ClipData
 import android.content.ClipboardManager
