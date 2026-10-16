@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F7"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Android 16 Special Permissions Tester"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1F2937"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test Notification read/reply/control, Install Unknown Apps, Usage Data, Accessibility, Write Secure Settings and Restricted Settings."
+            android:textSize="13sp"
+            android:textColor="#6B7280"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ONE CLICK ROOT CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeColor="#4F46E5"
+            app:strokeWidth="1.5dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#EEF2FF">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚡ 1-Click Root Granter (SU)"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#312E81" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grant all special permissions instantly if this device has Root Superuser (su)."
+                    android:textSize="12sp"
+                    android:textColor="#4338CA"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnGrantAllRoot"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Grant All via Root"
+                        android:backgroundTint="#4F46E5"
+                        android:textColor="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/btnCopyAdb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Copy ADB"
+                        android:layout_marginStart="8dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:textColor="#4F46E5" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 1. NOTIFICATIONS CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1. Notification Read, Reply &amp; Control"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#111827" />
+
+                    <TextView
+                        android:id="@+id/statusNotif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DENIED"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/status_denied" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvNotifDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NotificationListenerService status: Inactive"
+                    android:textSize="12sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnOpenNotifSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enable Listener"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btnTestPostNotif"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Post Test Notif"
+                        android:textSize="12sp"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp">
+
+                    <Button
+                        android:id="@+id/btnReadNotifs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Read Active (0)"
+                        android:textSize="12sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btnDismissAllNotifs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dismiss All"
+                        android:textSize="12sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 2. INSTALL UNKNOWN APPS CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2. Install Unknown Apps"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#111827" />
+
+                    <TextView
+                        android:id="@+id/statusInstall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DENIED"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/status_denied" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvInstallDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="REQUEST_INSTALL_PACKAGES: canRequestPackageInstalls() = false"
+                    android:textSize="12sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btnOpenInstallSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Open Unknown Apps Settings"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3. APP USAGE DATA CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="3. App Usage Data (UsageStats)"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#111827" />
+
+                    <TextView
+                        android:id="@+id/statusUsage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DENIED"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/status_denied" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvUsageDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PACKAGE_USAGE_STATS permission not granted"
+                    android:textSize="12sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnOpenUsageSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Open Usage Settings"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btnQueryUsage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Query Recent Apps"
+                        android:textSize="12sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. ACCESSIBILITY SETTINGS CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="4. Accessibility Settings"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#111827" />
+
+                    <TextView
+                        android:id="@+id/statusAccessibility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DISABLED"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/status_denied" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvAccessibilityDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TestAccessibilityService is not enabled in System Accessibility."
+                    android:textSize="12sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnOpenAccessibilitySettings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Open Settings"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="4dp" />
+
+                    <Button
+                        android:id="@+id/btnTestGlobalAction"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Test Notification Shade"
+                        android:textSize="12sp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 5. WRITE SECURE SETTINGS CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="5. Write Secure Settings"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#111827" />
+
+                    <TextView
+                        android:id="@+id/statusSecure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DENIED"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/status_denied" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSecureDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Requires pm grant via ADB or SU"
+                    android:textSize="12sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btnTestWriteSecure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test Write to Secure Settings"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 6. RESTRICTED SETTINGS INFO CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6. Restricted Settings (Android 13+)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#111827" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="When sideloaded, Android disables Accessibility and Notification Listener with 'Restricted setting'.\n\nTo allow:\n1. Open App Info (button below)\n2. Tap the ⋮ (3-dots) in top right\n3. Tap 'Allow restricted settings'\n4. Confirm with PIN or Biometrics."
+                    android:textSize="12sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btnOpenAppInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Open App Info Screen"
+                    android:textSize="12sp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- LOG CONSOLE -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:cardBackgroundColor="#1E293B">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activity &amp; Diagnostics Log"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#94A3B8" />
+
+                <TextView
+                    android:id="@+id/tvConsole"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ready to test permissions.\n"
+                    android:fontFamily="monospace"
+                    android:textSize="11sp"
+                    android:textColor="#38BDF8"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>
