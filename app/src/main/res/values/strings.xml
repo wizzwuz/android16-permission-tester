@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Android 16 Permission Tester</string>
+    <string name="accessibility_service_description">Service to test Android Accessibility settings and global actions (Back, Home, Notifications).</string>
+</resources>
